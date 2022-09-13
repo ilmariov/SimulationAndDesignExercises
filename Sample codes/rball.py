@@ -41,14 +41,13 @@ def simOneGame(probA, probB):
             if random() < probA:
                 scoreA = scoreA + 1
             else:
-                serving == "B"
+                serving = "B"
         else:
             if random() < probB:
                 scoreB = scoreB + 1
             else:
-                serving == "A"
-    #return scoreA, scoreB
-    print(scoreA, scoreB)
+                serving = "A"
+    return scoreA, scoreB
 
 def gameOver(a, b):
     # a and b represents scores for a racquetball game
@@ -62,5 +61,4 @@ def printSummary(winsA, winsB):
     print('Wins for A: {0} ({1:0.1%})'.format(winsA, winsA/n))
     print('Wins for B: {0} ({1:0.1%})'.format(winsB, winsB/n))
 
-#if __name__== '__main__' : main()
-simOneGame(0.00001, 0.99)
+if __name__== '__main__' : main()
