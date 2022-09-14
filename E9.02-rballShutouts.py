@@ -3,8 +3,8 @@ from random import random
 def main():
     printIntro()
     probA, probB, n = getInputs()
-    winsA, winsB = simNGames(n, probA, probB)
-    printSummary(winsA, winsB)
+    winsA, winsB, shutoutsA, shutoutsB = simNGames(n, probA, probB)
+    printSummary(winsA, winsB, shutoutsA, shutoutsB)
 
 def printIntro():
     print('This program simulates a game of racquetball between two')
@@ -24,13 +24,19 @@ def simNGames(n, probA, probB):
     # Simulates n games and returns winsA and winsB
     winsA = 0
     winsB = 0
+    shutoutsA = 0
+    shutoutsB = 0
     for i in range(n):
         scoreA, scoreB = simOneGame(probA, probB)
         if scoreA > scoreB:
             winsA = winsA + 1
+            if shutouts(scoreA, scoreB):
+                shutoutsA = shutoutsA + 1
         else:
             winsB = winsB + 1
-    return winsA, winsB
+            if shutouts(scoreA, scoreB):
+                shutoutsB = shutoutsB + 1
+    return winsA, winsB, shutoutsA, shutoutsB
 
 def simOneGame(probA, probB):
     scoreA = 0
@@ -54,11 +60,21 @@ def gameOver(a, b):
     # Returns True if the game is over, False otherwise.
     return a==15 or b==15
 
-def printSummary(winsA, winsB):
+def shutouts(scoreA, scoreB):
+    checker = None
+    if (scoreA==15 or scoreB==15) and (scoreA==0 or scoreB==0):
+        checker = True
+    else:
+        checker = False
+    return checker
+
+def printSummary(winsA, winsB, shutoutsA, shutoutsB):
     # Prints a summary of wins for each player.
     n = winsA + winsB
     print('\nGames simulated:', n)
     print('Wins for A: {0} ({1:0.1%})'.format(winsA, winsA/n))
     print('Wins for B: {0} ({1:0.1%})'.format(winsB, winsB/n))
+    print('Shutouts for A: {0} ({1:0.1%})'.format(shutoutsA, shutoutsA/winsA))
+    print('Shutouts for B: {0} ({1:0.1%})'.format(shutoutsB, shutoutsB/winsB))
 
 if __name__== '__main__' : main()
