@@ -13,14 +13,13 @@ def printIntro():
     effect on the relative advantage enjoyed by the better team.''')
     
 def getInputs():
-    # Returns the three simulation parameters probA, probB and n
     a = float(input('\nWhat is the prob. team A wins a serve? '))
     b = float(input('What is the prob. team B wins a serve? '))
     n = int(input('How many games to simulate? '))
     return a, b, n
 
 def simNGames(n, probA, probB):
-    # Simulates n games and returns winsA and winsB
+    # Simulates n games and returns matches won by each team for regular and rally scoring.
     winsAReg = 0
     winsBReg = 0
     winsARally = 0
@@ -56,7 +55,7 @@ def simOneGameReg(probA, probB):
     return scoreA, scoreB
 
 def gameOverReg(a, b):
-    # a and b represents scores for a volleyball game
+    # a and b represents scores for a regular volleyball game
     # Returns True if the game is over, False otherwise.
     return (a>=15 or b>=15) and abs(a-b)>=2
 
@@ -80,11 +79,12 @@ def simOneGameRally(probA, probB):
     return scoreA, scoreB
 
 def gameOverRally(a, b):
-    # a and b represents scores for a volleyball game
+    # a and b represents scores for a rally scoring volleyball game
     # Returns True if the game is over, False otherwise.
     return (a>=25 or b>=25) and abs(a-b)>=2
 
 def result(reg, ral):
+    # Returns the string to be added in comparison summary.
     string = ''
     if (ral - reg) > 0:
         string = 'magnified'
@@ -106,7 +106,8 @@ def compareGames(a, b, A, B):
     return string, winner
 
 def printSummary(winsAReg, winsBReg, winsARally, winsBRally):
-    # Prints a summary of wins for each player.
+    # Prints a summary of wins for each team and each type of game
+    # Reports the outcome of the investigation when comparing.
     n = winsAReg + winsBReg
     outcome, winner = compareGames(winsAReg, winsBReg, winsARally, winsBRally)
     print('\nGames simulated:', n)
