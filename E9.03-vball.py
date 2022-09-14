@@ -50,9 +50,9 @@ def simOneGame(probA, probB):
     return scoreA, scoreB
 
 def gameOver(a, b):
-    # a and b represents scores for a racquetball game
+    # a and b represents scores for a volleyball game
     # Returns True if the game is over, False otherwise.
-    return a==15 or b==15
+    return (a>=15 or b>=15) and abs(a-b)>=2
 
 def printSummary(winsA, winsB):
     # Prints a summary of wins for each player.
