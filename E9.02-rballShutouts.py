@@ -61,12 +61,7 @@ def gameOver(a, b):
     return a==15 or b==15
 
 def shutouts(scoreA, scoreB):
-    checker = None
-    if (scoreA==15 or scoreB==15) and (scoreA==0 or scoreB==0):
-        checker = True
-    else:
-        checker = False
-    return checker
+    return (scoreA==15 or scoreB==15) and (scoreA==0 or scoreB==0)
 
 def printSummary(winsA, winsB, shutoutsA, shutoutsB):
     # Prints a summary of wins for each player.
