@@ -29,7 +29,7 @@ def simNGames(n, probA, probB):
     scoredByA = []
     scoredByB = []
     for i in range(n):
-        scoreA, scoreB = simOneGame(probA, probB, i)
+        scoreA, scoreB = simOneGame(probA, probB, i+1)
         scoredByA.append(scoreA)
         scoredByB.append(scoreB)
         if scoreA > scoreB:
