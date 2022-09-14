@@ -12,8 +12,8 @@ def printIntro():
     print('This program simulates a game of racquetball between two')
     print('players called "A" and "B". The ability of each player is')
     print('indicated by a probability (a number between 0 and 1) that')
-    print('the player wins the point when serving. Player A always')
-    print('has the first serve.')
+    print('the player wins the point when serving. First service')
+    print('alternates each game.')
 
 def getInputs():
     # Returns the three simulation parameters probA, probB and n
