@@ -8,10 +8,11 @@ def main():
 
 def printIntro():
     print('This program simulates a game of volleyball between two')
-    print('players called "A" and "B". The ability of each player is')
-    print('indicated by a probability (a number between 0 and 1) that')
-    print('the player wins the point when serving. Player A always')
-    print('has the first serve.')
+    print('players called "A" and "B" that play using rally scoring.')
+    print('The ability of each player is indicated by a probability')
+    print('(a number between 0 and 1) that the player wins the point')
+    print('when serving. Player A always has the first serve and players')
+    print("can score even if they are not serving.")
 
 def getInputs():
     # Returns the three simulation parameters probA, probB and n
