@@ -98,10 +98,10 @@ def setOver(a, b):
     return check
 
 def matchOver(a, b):
-    # a and b represents won sets for a tennis match
+    # a and b represents sets won in a tennis match
     # Returns True if the match is over, False otherwise.
     return (a>=2 or b>=2) and abs(a-b)>=1
-
+    
 def whoServes():
     num = randint(0,1)
     if num == 0:
@@ -117,4 +117,4 @@ def printSummary(winsA, winsB):
     print('Wins for A: {0} ({1:0.1%})'.format(winsA, winsA/n))
     print('Wins for B: {0} ({1:0.1%})'.format(winsB, winsB/n))
 
-if __name__== '__main__' : gameOver(4,2)
+if __name__== '__main__' : main()
