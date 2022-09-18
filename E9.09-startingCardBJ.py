@@ -9,14 +9,18 @@ def main():
 def printIntro():
     print('''
     This program simulates multiple games of blackjack and estimates
-    the probability that the dealer will bust.
+    the probability that the dealer will bust when starting with one
+    specific card showing.
     ''')
 
 def simNGames(n):
-    busts = 0
+    busts = [0]*10
     for i in range(n):
-        if simOneGame():
-            busts = busts + 1
+        checker,dcard1 = simOneGame()
+        for j in range(10):
+            if checker:
+                if dcard1 == j+1:
+                    busts[j] = int(busts[j]) + 1
     return busts
 
 def simOneGame():
@@ -41,7 +45,7 @@ def simOneGame():
                 dealer_hand = dealer_hand + last_dcard
                 if dealer_hand > 21:
                     checker = True
-    return checker
+    return checker, dcard1
 
 def deal():
     pcard1 = randint(1,10)
@@ -96,8 +100,11 @@ def hasAce(cards):
     return checker
 
 def printProb(n, busts):
-    print('\nAfter simulating {} games of blackjack, the estimated'.format(n))
-    print('probability that the dealer will bust is: {0:0.1%}'.format(busts/n))
+    print('\nAfter simulating {} games of blackjack, the estimated probability'.format(n))
+    print('that the dealer will bust when showing one specific initial card is:')
+    print('')
+    for i in range(10):
+        print('Card: {0:02d} ---- Probability: {1:0.1%}'.format(i+1, int(busts[i])/n))
 
 
 if __name__=='__main__' : main()
